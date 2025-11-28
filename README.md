@@ -1,5 +1,5 @@
-## C3po - Data Validator, Decoder & Data Parser
-[github.com/5tk-dev/c3po](https://github.com/5tk-dev/c3po)
+## Tupi - Data Parser & Validator
+[github.com/5tk-dev/tupi](https://github.com/5tk-dev/tupi)
 
 ## Braza - Web Framework
 [github.com/5tk-dev/braza](https://github.com/5tk-dev/braza)
@@ -14,35 +14,3 @@
 - Schema Validator
 - Rendering built-in (template/html)
 - Implements net/http
-
-
-### Exemplos
-
-### C3po - Exemplo Basico
-```go
-type User struct {
-    Name string `c3po:"required"`
-    Age  int    `c3po:"min=18"`
-}
-
-data := &User{Name: "Luke", Age: 17}
-schema := c3po.ParseSchema(data)
-res := schema.Decode(data)
-
-if res.HasError() {
-    fmt.Println(res.Errors())
-}
-
-u := res.Value().(*User)
-```
-
-### Braza - Exemplo Basico
-```go
-func main() {
- app := braza.NewApp(nil)
- app.GET("/hello", func(ctx *braza.Ctx){
-   ctx.JSON(map[string]string{"hello":"world!"},200)
- })
- app.Listen()
-}
-```
